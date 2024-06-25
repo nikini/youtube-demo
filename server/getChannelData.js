@@ -1,6 +1,7 @@
 const getRequestData = require('./getRequestData');
+const getPlaylistItems = require('./getPlaylistItems');
 
-const getChannelData = async (handle) => {
+module.exports = async (handle) => {
   const page = await getRequestData('channels', {
     part: 'snippet,contentDetails,statistics',
     forHandle: handle,
@@ -29,23 +30,3 @@ const getChannelData = async (handle) => {
     cost: totalCost,
   };
 }
-
-const getPlaylistItems = async (playlistId) => {
-  const page = await getRequestData('playlistItems', {
-    part: 'id,snippet,contentDetails,status',
-    playlistId,
-  });
-
-  if (!page.data || page.data.pageInfo.totalResults < 1) {
-    return null;
-  }
-
-  return {
-    data: page.data.items,
-    cost: page.cost,
-  };
-}
-
-module.exports = {
-  getChannelData,
-};

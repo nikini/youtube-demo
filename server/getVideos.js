@@ -1,5 +1,5 @@
 const moment = require('moment');
-const { getChannelData } = require('./methods');
+const getChannelData = require('./getChannelData');
 
 // Channels
 const channels = ['veganpowerlab', 'veganpostmortem'];
