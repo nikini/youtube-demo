@@ -1,8 +1,10 @@
 const axios = require('axios');
 const getCost = require('./getCost');
+require('dotenv').config()
 
 // Replace 'YOUR_API_KEY' with your actual YouTube Data API v3 key
-const API_KEY = 'AIzaSyD6jf5lk4GQGtqtB4TBITA4LyQ8kx08S4w';
+// AIzaSyD6jf5lk4GQGtqtB4TBITA4LyQ8kx08S4w
+const API_KEY = process.env.API_KEY;
 
 module.exports = async (requestName, params = {}) => {
   try {
